@@ -1,4 +1,5 @@
 This project  for  Aaron Swartz,The internet's own boy.<br>
+Special Thanks:Aaron Swartz,Mark Elliot Zuckerberg,naive安少,瘤马,瘤腾,伟哥<br>
 lasia  
 lasia 勇敢飞吧 <br>
 未来 慢慢地 出现 一个轮廓 <br>

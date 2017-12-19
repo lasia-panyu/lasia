@@ -10,6 +10,8 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 """
+
+
  base基类,无固定参数
  制定设置 key为模板建议要求，value为属性值
  type   str   操作类型

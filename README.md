@@ -1,4 +1,4 @@
-:This project  for  Aaron Swartz,The internet's own boy.<br>
+This project  for  Aaron Swartz,The internet's own boy.<br>
 lasia  
 lasia 勇敢飞吧 <br>
 未来 慢慢地 出现 一个轮廓 <br>

@@ -20,15 +20,26 @@ sys.setdefaultencoding('utf8')
  curpage itn  选择页数
 
   {"type":'SELECT',"field":['name','desc'],"tn":'product',"cause":{"id":1}}
+  
+  讲字典转换为sql并且执行
 """
 
-pool = PooledDB(MySQLdb, 5, host='124.94.129.94', user='mibank_test', passwd='mibank_test', db='mibank_test', port=3306,charset="utf8")
+"""
+ dbutil 数据库连接池
+ 之后会有两个分支
+ 1.lasia专属连接池
+ 2.集成redis支持
+"""
+pool = PooledDB(MySQLdb, 5, host='', user='', passwd='', db='', port=3306,charset="utf8")
 
 class BsbEntity():
     threadList=[threading.Thread(name='bsbThread'+str(x)) for x in range(4)]
     regex = "(\\])|(\\[)|(\\')"
 
 
+    """
+    sql 2  json [ num:{} ....]
+    """
     def execSql(self, **kargs):
         print("begin")
         conn = pool.connection()  # 以后每次需要数据库连接就是用connection（）函数获取连接就好了
@@ -47,7 +58,7 @@ class BsbEntity():
         cur.close()
         conn.close()
         return dict2
-
+    # 过滤特别符号
     def sqlFilter (self, fromregex, toregex, *args):
         print str(*args)
         return filter(lambda x: re.sub(fromregex,toregex , str(x)),str(*args))
@@ -84,29 +95,3 @@ class BsbEntity():
         if kargs['type'] == 'DELETE':
             return "delete from %s where %s"(filter(self.regex), '', kargs['tn'], \
                                                 filter(self.regex), '', self.mapToSql('cause', kargs))
-
-"""
-def a(sql):
-    dict1 = {}
-    dict2 = {}
-    for x in range(len(sql)):
-        dict1 = {}
-        for y in range(len(sql[x])):
-            dict1[cur.description[y][0]] = str(sql[x][y])
-        print dict1
-        dict2[x]=dict1
-    print "ending"
-    return dict2
-conn = MySQLdb.Connect(host='124.94.129.94', user='mibank_test', passwd='mibank_test', db='mibank_test', port=3306,charset="utf8")
-#conn = pool.connection()  # 以后每次需要数据库连接就是用connection（）函数获取连接就好了
-cur = conn.cursor()
-cur.execute("select * from tb_account_info where 1=1  LIMIT 0,3")
-print cur.description
-results = cur.fetchall()
-
-print a(results)
-json_data = json.dumps(a(results))
-print json_data
-cur.close()
-conn.close()
-"""

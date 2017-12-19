@@ -95,3 +95,6 @@ class BsbEntity():
         if kargs['type'] == 'DELETE':
             return "delete from %s where %s"(filter(self.regex), '', kargs['tn'], \
                                                 filter(self.regex), '', self.mapToSql('cause', kargs))
+
+
+

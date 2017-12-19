@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ name }}代言-baby still buy</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="/static/lib/weui.min.css">
+<link rel="stylesheet" href="/static/css/jquery-weui.css">
+<link rel="stylesheet" href="/static/css/demos.css">
+
+  </head>
+
+  <body ontouchstart>
+
+   <header class='demos-header'>
+      <h1 class="demos-title">{{ name }}代言</h1>
+      <h1 class="demos-title">baby still buy</h1>
+   </header>
+
+    <div class="weui-tab">
+      <div class="weui-navbar">
+        <a id='weuitab1' class="weui-navbar__item weui-bar__item--on" href="#tab1">
+          baby
+        </a>
+        <a id='weuitab2' class="weui-navbar__item" href="#tab2">
+          still
+        </a>
+        <a id='weuitab3' class="weui-navbar__item" href="#tab3">
+          buy
+        </a>
+      </div>
+      <div class="weui-tab__bd">
+        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+          <div id="bsbnews" class="weui-panel weui-panel_access">
+            <div class="weui-media-box__bd">
+             <div class="weui-panel__hd" style='background-color:#00DB00'>我这个标题，不美嘛？</div>
+             <h4 class="weui-media-box__title">宝贝一直拍</h4>
+             <p class="weui-media-box__desc">宝贝一直拍 十一烧钱秒杀品 十一爆品 女式休闲毛衣 钻技套刀实用组家用净水器 德国不锈钢炒锅32cm黑糖...</p>
+            </div>
+          </div>
+          <div class="weui-loadmore">
+            <i class="weui-loading"></i>
+            <span class="weui-loadmore__tips">正在加载</span>
+          </div>
+        </div>
+        <div id="tab2" class="weui-tab__bd-item">
+          <div class="weui-loadmore weui-loadmore_line">
+             <span class="weui-loadmore__tips">bsb</span>
+             <span class="weui-loadmore__tips">暂无数据</span>
+          </div>
+          <div class="weui-loadmore weui-loadmore_line">
+          </div>
+          <div class="weui-panel__bd">
+              <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+              <div class="weui-media-box__hd">
+                <img class="weui-media-box__thumb" src="">
+              </div>
+           <div class="weui-media-box__bd">
+           <h4 class="weui-media-box__title">标题一</h4>
+           <p class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+           </div>
+              </a>
+        </div>
+      </div>
+        <div id="tab3" class="weui-tab__bd-item">
+          <h1>bsb</h1>
+<div class="weui-form-preview">
+  <div class="weui-form-preview__hd">
+    <label class="weui-form-preview__label">灵性</label>
+    <em class="weui-form-preview__value">naive</em>
+  </div>
+    <div class="weui-form-preview__bd">
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">手机号</label>
+      <span class="weui-form-preview__value">手机号</span>
+    </div>
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">微信号</label>
+      <span class="weui-form-preview__value">名字名字名字</span>
+    </div>
+    <div class="weui-form-preview__item">
+      <label class="weui-form-preview__label">brf</label>
+      <span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</span>
+    </div>
+  </div>
+  <div class="weui-form-preview__ft">
+    <a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:">辅助操作</a>
+    <button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">操作</button>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+
+<script src="/static/lib/jquery-2.1.4.js"></script>
+<script src="/static/lib/fastclick.js"></script>
+<script src="/static/lib/jquery-weui.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+   <script>
+       function copyText(user_id){
+          window.location='bsbdetail/'+user_id;
+       }
+   </script>
+<script type="text/javascript">
+  $(document.body).infinite();
+  var loading = false;  //状态标记
+$(document.body).infinite().on("infinite", function() {
+   if(loading) return;
+   loading = true;
+   var bsb_page=1;
+  setTimeout(function() {
+    var active=$('#weuitab1').attr('class');
+   if(active=="weui-navbar__item weui-bar__item--on"){
+          console.log('执行了');
+           //.$.ajax带json数据的异步请求
+  var aj = $.ajax( {
+      url:'bsbjson',// 跳转到 action
+      data:JSON.stringify({
+               type: 'SELECT',
+               page : 3,
+               curpage:bsb_page,
+               tn:'tb_account_info'
+      }),
+     type:'post',
+     cache:false,
+     dataType:'json',
+     success:function(data) {
+             // view("修改成功！");
+             alert(data);
+             console.log(data);
+             for(var x in data){
+                 console.log(data[x].account_name);
+                 console.log(data[x].credential_number);
+                 console.log(data[x].two_dimen_code)
+                 $("#bsbnews").append('<div class="weui-media-box__bd  onlick=bsbDetail('+ data[x].user_id+')>');
+                 $("#bsbnews").append('<p> 我是新加载的内容 </p>');
+                 $("#bsbnews").append('<div class="weui-panel__hd" style="background-image: url(/static/1.jpg)">'+data[x].account_name+'</div>');
+                 $("#bsbnews").append('<h4 class="weui-media-box__title">'+data[x].credential_number+'</h4>');
+                 $("#bsbnews").append('<p class="weui-media-box__desc">'+data[x].two_dimen_code+'</p></div>');
+             }
+             for(var i=1;i<3;i++) {
+
+             }
+      },
+      error : function() {
+           // view("异常！");
+           alert("异常！");
+      }
+ });
+    }
+    loading = false;
+  }, 10);   //模拟延迟
+});
+</script>
+
+  </body>
+</html>

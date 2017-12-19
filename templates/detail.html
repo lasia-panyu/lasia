@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="/static/lib/weui.min.css">
+<link rel="stylesheet" href="/static/css/jquery-weui.css">
+<link rel="stylesheet" href="/static/demos.css">
+
+  </head>
+
+  <body ontouchstart>
+
+    <header class='demos-header'>
+      <h1 class="demos-title">Article</h1>
+    </header>
+     {% for bsbEntity in bsbDict %}
+         <article class="weui-article">
+      <h1>    {{ digit.account_name }}</h1>
+      <section>
+        <h2 class="title">{{ digit.account_name }}<</h2>
+        <section>
+          <h3>{{ digit.account_name }}</h3>
+          <p>
+           {{ digit.account_name }}<{{ digit.account_name }}<{{ digit.account_name }}<
+          </p>
+          <p>
+            <img src="./images/pic_article.png" alt="">
+            <img src="./images/pic_article.png" alt="">
+          </p>
+        </section>
+        <section>
+          <h3>{{ digit.account_name }}<</h3>
+          <p>
+           {{ digit.account_name }}<{{ digit.account_name }}<{{ digit.account_name }}<{{ digit.account_name }}<
+          </p>
+        </section>
+      </section>
+    </article>
+  {% endfor %}
+
+
+    <script src="/static/lib/jquery-2.1.4.js"></script>
+<script src="/static/lib/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script src="/static/js/jquery-weui.js"></script>
+
+  </body>
+</html>
